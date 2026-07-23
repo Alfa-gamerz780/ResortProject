@@ -1,0 +1,137 @@
+.amenities-hero-div {
+    padding: 6rem 2rem;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    justify-self: center;
+    background: linear-gradient(90deg,
+            rgba(7, 30, 35, 1),
+            rgba(5, 18, 20, 0.75),
+            rgba(5, 18, 20, 0.35)),
+        url('../../assets/pic4.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 25px;
+    color: white;
+}
+
+.amenities-hero-div span {
+    color: #C89B3C;
+}
+
+.amenities-hero-div b {
+    font-size: 4rem;
+    font-family: "Cormorant Garamond", serif;
+}
+
+.amenities-hero-txt {
+    width: 50%;
+}
+
+.amenities-hero-div button {
+    background-color: #0F4C45;
+    color: white;
+    padding: 0.7rem 1rem;
+    border-radius: 22px;
+    border: none;
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+        box-shadow: 0 0 22px black;
+    }
+}
+
+@media (width < 850px) {
+    .amenities-hero-txt{
+        width: 100%;
+    }
+}
+
+/* Amenity card */
+.amenities-card-head{
+    justify-self: center;
+    text-align: center;
+    margin: 2rem;
+    font-size: 2rem;
+}
+
+.amenities-card-head p{
+    color: #0F4C45;
+    font-size: 4rem;
+    font-family: "Cormorant Garamond", serif;
+    border-bottom:5px solid #C89B3C;
+}
+
+.amenities-card-head span{
+    color: #C89B3C;
+}
+
+
+.amenities-card-div{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    width: 90%;
+    justify-self: center;
+    margin: 3rem 0;
+    gap: 2rem 2.5rem;
+}
+
+.amenity-card{
+    overflow: hidden;
+    border-radius: 22px;
+    box-shadow: 5px 5px 10px gray;
+    width: 100%;
+    &:hover{
+        transition: all 0.2s ease-in-out;
+        transform: scale(1.02);
+    }
+}
+
+.amenity-img {
+    padding: 4rem;
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 1.5rem;
+}
+
+.amenity-logo{
+    color: #C89B3C;
+    position: relative;
+    bottom: -6rem;
+    left: -3rem;
+    background-color: white;
+    height: 5rem;
+    width: 5rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    border-radius: 50%;
+}
+
+.amenity-txt{
+    padding: 1rem;
+    margin-right: 1rem;
+}
+
+.amenity-txt p{
+    color: #0F4C45;
+    font-size: 2rem;
+    font-family: "Cormorant Garamond", serif;
+    
+}
+
+@media (width < 1150px) {
+    .amenities-card-div{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+@media (width < 600px) {
+    .amenities-card-div{
+        grid-template-columns: 1fr;
+    }
+}

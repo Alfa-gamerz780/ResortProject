@@ -1,0 +1,95 @@
+#foot {
+    width: 100%;
+    font-size: 18px;
+    background-color: #0f4c45;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+#foot a {
+    color: white;
+    text-decoration: none;
+}
+
+
+.footer-div {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: start;
+    justify-self: center;
+    padding: 1rem;
+    width: 90%;
+    gap: 2rem;
+    color: white;
+}
+
+.resort-info img {
+    width: 20rem;
+}
+
+.s-link {
+    width: 100%;
+    align-self: center;
+}
+
+.s-link i {
+    margin-right: 1rem;
+    font-size: 2rem;
+}
+
+.q-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.q-ul {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+
+.amenities-links ul {
+    list-style: none;
+}
+
+.contact-way {
+    display: flex;
+    align-items: start;
+    gap: 1.5rem;
+}
+
+.contact-info button {
+    border: none;
+    background-color: #C89B3C;
+    padding: 0.7rem 2.5rem;
+    color: #0f4c45;
+    font-weight: bold;
+    border-radius: 12px;
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+        box-shadow: 0 0 15px black;
+    }
+}
+
+@media (width <1150px) {
+    .footer-div {
+        grid-template-columns: repeat(2, 1fr);
+        width: 70%;
+    }
+}
+
+@media (width < 650px) {
+    .footer-div {
+        grid-template-columns: auto;
+        width: 90%;
+        text-wrap: wrap;
+        padding: 1rem 0;
+    }
+
+    .resort-info {
+        font-size: 0.8rem;
+    }
+}

@@ -1,0 +1,154 @@
+.contact-hero-div {
+    padding: 6rem 2rem;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    justify-self: center;
+    background: linear-gradient(90deg,
+            rgba(7, 30, 35, 1),
+            rgba(5, 18, 20, 0.65),
+            rgba(5, 18, 20, 0.35)),
+        url(../../assets/pic5.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 25px;
+    color: white;
+}
+
+.contact-hero-div span{
+    color: #C89B3C;
+}
+
+.contact-hero-div b{
+    font-size: 4rem;
+    font-family: "Cormorant Garamond", serif;
+    width: 50%;
+}
+
+@media (width < 720px) {
+    .contact-hero-div{
+        width: 95%;
+    }
+    
+    .contact-hero-div b{
+        width: 100%;
+        font-size: 3rem;
+    }
+}
+
+/* Message */
+
+.message-div{
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    justify-self: center;
+    gap: 1rem 2rem;
+    margin-bottom: 2rem;
+}
+
+
+
+/* Message Section */
+
+.message-form-div{
+    box-shadow: 5px 5px 12px gray;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-radius: 22px;
+}
+
+.message-div p{
+    margin: 0;
+}
+
+.message-div-head{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 1rem;
+}
+
+.message-div-head p{
+    font-family: "Cormorant Garamond", serif;
+    color: #0F4C45;
+    font-size: 2rem;
+}
+
+.message-mail-icon{
+    background-color: #0F4C45;
+    border-radius: 12px;
+    color: #C89B3C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3rem;
+    font-size: 2.5rem;
+}
+
+.form-input{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 1rem 2rem ;
+}
+
+.contact-form-div input, .contact-form-div textarea{
+    padding: 1rem;
+    border-radius: 12px;
+    border: 2px solid gray;
+    font-weight: 600;
+}
+
+.contact-form-div textarea{
+    margin-top: 1rem;
+    width: 100%;
+    height: 20vh;
+}
+
+.contact-form-div button{
+    padding: 0.7rem 1rem;
+    background-color: #0F4C45;
+    color: white;
+    border-radius: 12px;
+    border: none;
+    margin: 1rem 0 0.3rem;
+}
+
+@media (width < 1080px) {
+    .message-div{
+        grid-template-columns: 1fr;
+    }
+
+     .resort-map-div iframe{
+        height: 100vh;
+    }
+}
+
+@media (width < 580px) {
+    .form-input{
+        grid-template-columns: 1fr;
+    }
+}
+
+.resort-map-div{
+    margin: 2rem 0;
+    background: none;
+}
+
+.resort-map-div iframe{
+    border-radius: 22px;
+    height: 90%;
+}
+
+.resort-map-div button{
+    width: 100%;
+    padding: 0.5rem 0;
+    background-color: #0F4C45;
+    margin-top: 0.5rem;
+    color: white;
+    border-radius: 12px;
+    border: none;
+}

@@ -1,0 +1,321 @@
+.room-hero-div {
+    padding-top: 7rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5rem;
+    justify-content: space-between;
+}
+
+.room-hero-txt {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 3rem;
+    width: 37%;
+    font-size: 1.1rem;
+}
+
+.room-hero-txt span {
+    color: #C89B3C;
+}
+
+.room-hero-txt p {
+    color: #0F4C45;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 4rem;
+}
+
+.room-hero-img {
+    background-image: url('../../assets/room7.png');
+    height: 70vh;
+    width: 55%;
+    border-radius: 32px 0 0 32px;
+}
+
+#room-hero-tag {
+    background-color: #0F4C45;
+    border-radius: 1.5rem;
+    color: white;
+    width: 40%;
+    text-align: center;
+    padding: 1.5rem 2rem;
+    font-size: 1.7rem;
+    position: relative;
+    z-index: 997;
+    left: -3rem;
+    bottom: -60vh;
+}
+
+#room-hero-tag p {
+    margin: 0;
+    color: #C89B3C;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+}
+
+@media (width< 1080px) {
+    .room-hero-div {
+        flex-direction: column;
+    }
+
+    .room-hero-img {
+        width: 90%;
+        justify-self: end;
+        border-radius: 32px;
+
+    }
+
+    .room-hero-txt {
+        margin-bottom: 2rem;
+        width: 90%;
+        text-align: left;
+    }
+
+    #room-hero-tag {
+        margin-left: 2rem;
+        width: auto;
+    }
+}
+
+
+/* Room Card */
+
+#room-card-section {
+    width: 90%;
+    justify-self: center;
+}
+
+#room-card-section h2 {
+    font-family: "Cormorant Garamond", serif;
+    margin: 2rem 0;
+}
+
+.room-card-div {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    display: grid;
+    gap: 2rem;
+    justify-self: center;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.room-card {
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 0 3px black;
+}
+
+.room-card-img {
+    overflow: hidden;
+}
+
+.room-card-img img {
+    width: 100%;
+
+    &:hover {
+        transition: 0.7s ease;
+        transform: scale(1.1);
+    }
+}
+
+.room-card-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1rem;
+}
+
+.room-card-info p {
+    margin: 0.5rem 0;
+}
+
+.room-card-info span {
+    font-weight: 700;
+}
+
+.room-card-info b {
+    color: #C89B3C;
+}
+
+.room-ex-detail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.5rem;
+}
+
+.room-dec {
+    padding: 0.5rem 0;
+    margin: 0;
+}
+
+.room-card button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0.5rem 0;
+    color: #0F4C45;
+}
+
+@media (width < 1125px) {
+    .room-card-div {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (width < 750px) {
+    .room-card-div {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (width > 2150px) {
+    .room-card-div {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+
+/* Benefits */
+.benefits-div {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    justify-self: center;
+    margin: 2rem;
+    color: white;
+    background-color: #0F4C45;
+    border-radius: 18px;
+    padding: 1.5rem 2rem;
+}
+
+#benefit-div-txt {
+    width: 60%;
+}
+
+.benefit-head {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    font-size: 2rem;
+    gap: 2rem;
+    font-family: "Cormorant Garamond", serif;
+    margin-bottom: 1.8rem;
+}
+
+.benefit-head p {
+    margin: 0;
+}
+
+#dis-tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem;
+    font-size: 4.5rem;
+    color: #C89B3C;
+    background-color: #115a52;
+    border-radius: 50%;
+}
+
+.benefit-head span {
+    color: #C89B3C;
+}
+
+.benefit-grid {
+    display: grid;
+    justify-content: center;
+    justify-self: center;
+    width: 100%;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.benefit-g-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: start;
+}
+
+.benefit-g-tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #C89B3C;
+    padding: 0.5rem;
+    background-color: #115a52;
+    border-radius: 50%
+}
+
+#benefit-vr {
+    height: 12rem;
+    width: 2px;
+    border-radius: 5px;
+    border: 2px solid #c89c3c84;
+    margin: 0 1.5rem;
+}
+
+.benefit-book-txt {
+    width: 38%;
+    font-size: 19px;
+}
+
+.benefit-book-txt button {
+    background-color: #0F4C45;
+    color: white;
+    border-radius: 12px;
+    border: 1px solid #C89B3C;
+    padding: 0.8rem 1.2rem;
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+        box-shadow: 0 0 12px #C89B3C;
+    }
+}
+
+@media (width<1250px) {
+    .benefit-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (width<820px) {
+    .benefits-div {
+        flex-direction: column;
+        padding: 1rem 0.4rem;
+    }
+
+    #benefit-vr {
+        width: 5rem;
+        height: 2px;
+        margin: 2rem 0rem;
+    }
+
+    .benefit-book-txt {
+        width: 80%;
+    }
+}
+
+@media (width<680px) {
+    .benefit-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    #dis-tag {
+        font-size: 3rem;
+        padding: 0.5rem;
+    }
+
+    .benefit-head {
+        justify-content: start;
+        flex-direction: column;
+        align-items: start;
+        font-size: 1.5rem;
+        gap: 0rem;
+    }
+}

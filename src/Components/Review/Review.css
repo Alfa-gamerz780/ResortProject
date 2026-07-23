@@ -1,0 +1,108 @@
+.review-hero-div {
+    padding: 6rem 2rem;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    justify-self: center;
+    background: linear-gradient(90deg,
+            rgb(248, 250, 250),
+            rgba(247, 249, 249),
+            rgba(5, 18, 20, 0.55),
+            rgba(5, 18, 20, 0.35)),
+        url('../../assets/pic3.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 25px;
+    /* color: white; */
+    font-size: 1.3rem;
+}
+
+.review-hero-div span {
+    color: #C89B3C;
+}
+
+.review-hero-div b {
+    color: #0F4C45;
+    font-size: 4rem;
+    font-family: "Cormorant Garamond", serif;
+}
+
+.review-hero-div .review-hero-txt{
+    width: 50%;
+}
+
+@media (width < 850px) {
+    .review-hero-div {
+        font-size: 1rem;
+        background: linear-gradient(90deg,
+                rgb(5, 18, 20),
+                rgba(5, 18, 20, 0.55),
+                rgba(5, 18, 20, 0.35)),
+            url('../../assets/pic5.png');
+        color: white;
+    }
+
+    .review-hero-div .review-hero-txt{
+        width: 90%;
+    }
+
+    .review-hero-div b {
+        font-size: 3rem;
+    }
+}
+
+/* Review card */
+.review-card-div{
+    justify-self: center;
+    padding: 1rem;
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    margin: 2rem 0;
+    gap: 1rem 2rem;
+}
+
+.review-card-div::-webkit-scrollbar{
+    display: none;
+}
+
+.review-card{
+    min-width: 24%;
+    box-shadow: 5px 5px 12px gray;
+    padding: 1rem;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.review-card p{
+    margin: 0;
+}
+
+.star{
+    color: #C89B3C;
+    font-size: 2rem;
+}
+
+.review-card-btn{
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.review-card-btn button{
+    background-color: #0F4C45;
+    color: white;
+    border: none;
+    font-size: 1.8rem;
+    height: 3rem;
+    width: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}

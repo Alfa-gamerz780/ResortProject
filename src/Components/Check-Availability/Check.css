@@ -1,0 +1,91 @@
+
+/* Check in section */
+
+#check-section {
+    position: relative;
+    z-index: 995;
+    top: -2rem;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem;
+    width: 90%;
+    border: 1px solid #C89B3C;
+    align-self: center;
+    justify-self: center;
+    border-radius: 12px;
+}
+
+#check-in-div {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-self: center;
+    gap: 5rem;
+    align-items: end;
+}
+
+.check-in-option p {
+    margin: 0;
+}
+
+.check-in-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 0 2rem;
+}
+
+.check-in-option i {
+    font-size: 1.8rem;
+}
+
+.check-in-option input,
+select {
+    width: 8rem;
+    border: none;
+}
+
+#check-btn {
+    border: 1px solid #C89B3C;
+    color: white;
+    background-color: #0F4C45;
+    padding: 0.5rem;
+    border-radius: 12px;
+    transition: 0.3s ease-in-out;
+    &:hover {
+        box-shadow: 0px 0px 18px #C89B3C;
+    }
+}
+
+@media (width < 1210px) {
+    #check-section {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+@media (width < 1210px) {
+    #check-in-div {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    .check-in-option input,
+    select {
+        width: 12rem;
+    }
+}
+
+@media (width < 650px) {
+    #check-in-div {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+
+    .check-in-option input,
+    select {
+        width: 8rem;
+    }
+}

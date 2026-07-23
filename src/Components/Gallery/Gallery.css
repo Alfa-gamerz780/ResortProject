@@ -1,0 +1,91 @@
+.gallery-hero-div {
+    padding: 6rem 2rem ;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    justify-self: center;
+    background: linear-gradient(90deg,
+            rgba(7, 30, 35, 1),
+            rgba(5, 18, 20, 0.65),
+            rgba(5, 18, 20, 0.35)) ,
+            url('../../assets/Herosection.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 25px;
+    color: white;
+}
+
+.gallery-hero-div span {
+    color: #C89B3C;
+}
+
+.gallery-hero-div b{
+    width: 50%;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 4rem;
+}
+
+.gallery-hero-div button{
+    background: none;
+    color: white;
+    border: 1px solid #C89B3C;
+    border-radius: 25px;
+    padding: 0.8rem 1rem;
+    transition: 0.2s ease-in-out;
+    &:hover{
+        color: #C89B3C;
+        box-shadow: 0 0 12px #C89B3C;
+    }
+}
+
+@media (width < 650px) {
+    .gallery-hero-div{
+        width: 95%;
+    }
+    
+    .gallery-hero-div b{
+        width: 100%;
+        font-size: 3rem;
+    }
+}
+
+
+/* Img Section */
+.gallery-img-div{
+    width: 90%;
+    justify-self: center;
+}
+
+.gallery-img-head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.gallery-img-head h3{
+    font-family: "Cormorant Garamond", serif;
+}
+
+.gallery-img-head a{
+    color: #0F4C45;
+    text-decoration: none;
+    font-weight: 600;
+    &:hover{
+        text-shadow: 0 0 15px #0F4C45;
+        text-decoration: underline;
+    }
+}
+
+.gallery-img-grid{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 3rem 2rem;
+}
+
+.gallery-img-grid img{
+    width: 100%;
+    border-radius: 18px;
+    height: 31vh;
+}

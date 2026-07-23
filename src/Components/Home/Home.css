@@ -1,0 +1,436 @@
+#home-div {
+    background-image: url(../../assets/Herosection.png);
+    background-size: cover;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    max-height: fit-content;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    padding-top: 5.5rem;
+}
+
+#home-div p {
+    margin: 0;
+}
+
+#hero-div1 {
+    width: 48%;
+    font-size: 18px;
+}
+
+#hero-head {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 5rem;
+}
+
+#hero-head i {
+    color: #C89B3C;
+}
+
+#hero-div1 button {
+    border: none;
+    background-color: #0F4C45;
+    padding: 8px 15px;
+    color: white;
+    border-radius: 22px;
+    margin-bottom: 1.5rem;
+    border: 1px solid white;
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+        box-shadow: 0px 0px 15px #C89B3C;
+    }
+}
+
+#hero-div2 {
+    height: 50%;
+    width: 50%;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    align-self: flex-end;
+}
+
+#rateing {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #0f4c459e;
+    padding: 0.5rem 1.2rem;
+    border-radius: 18px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(10px);
+    margin-bottom: 1.5rem;
+}
+
+#rate {
+    font-size: 1.8rem;
+}
+
+#rateing img {
+    width: 5rem;
+}
+
+@media (width < 950px) {
+    #home-div {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+        justify-content: center;
+    }
+
+    #hero-div2 {
+        align-items: flex-start;
+        justify-content: start;
+        align-self: baseline;
+    }
+
+    #hero-head {
+        font-size: 3rem;
+    }
+
+    #hero-div1 {
+        width: 80%;
+    }
+
+    #hero-div2 {
+        width: 80%;
+    }
+
+    #rateing {
+        padding: 0.5rem;
+    }
+
+    #rate {
+        font-size: 1.5rem;
+    }
+
+    #rateing img {
+        width: 3rem;
+    }
+}
+
+
+/* About  */
+
+.about-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    align-self: center;
+    justify-self: center;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.about-content p {
+    margin: 0;
+}
+
+.about-content {
+    width: 50%;
+}
+
+#about-up {
+    color: #C89B3C;
+    font-weight: bold;
+    border-bottom: 2px solid #C89B3C;
+    width: 12%;
+}
+
+#about-head {
+    font-weight: 500;
+    font-size: 3rem;
+    font-family: "Cormorant Garamond", serif;
+}
+
+.tag-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 2rem;
+    text-align: center;
+}
+
+.tag-out {
+    font-size: 4rem;
+    color: white;
+    width: 100%;
+}
+
+.tag {
+    align-self: center;
+    justify-self: center;
+    border-radius: 50%;
+    padding: 0.5rem;
+    background-color: #C89B3C;
+    text-align: center;
+}
+
+.tag-div p {
+    font-weight: bold;
+}
+
+.video-div {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-div video {
+    border-radius: 12px;
+}
+
+@media (width < 1150px) {
+    .about-div {
+        flex-direction: column;
+    }
+
+    .about-content {
+        width: 100%;
+    }
+
+    .video-div {
+        width: 100%;
+    }
+}
+
+@media (width < 550px) {
+    .tag-div {
+        flex-direction: column;
+    }
+}
+
+/* Room Section */
+
+.room-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    justify-self: center;
+    margin-top: 2rem;
+}
+
+.room-nav p {
+    margin: 0;
+    color: #C89B3C;
+    font-weight: bold;
+}
+
+.room-nav span {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2.7rem;
+}
+
+.room-btn button {
+    padding: 0.8rem 1rem;
+    border: 1px solid #C89B3C;
+    background-color: white;
+    color: #0F4C45;
+    font-weight: 600;
+    border-radius: 15px;
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+        box-shadow: 0 0 15px #C89B3C;
+    }
+}
+
+@media (width < 600px) {
+    .room-nav {
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+    }
+}
+
+.home-card-div {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    display: grid;
+    width: 90%;
+    gap: 2rem;
+    justify-self: center;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.home-card {
+    width: 100%;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 0 3px black;
+}
+
+.home-card-div p {
+    margin: 0;
+}
+
+.home-card-img {
+    overflow: hidden;
+}
+
+.home-card-img img {
+    width: 100%;
+
+    &:hover {
+        transition: 0.7s ease;
+        transform: scale(1.1);
+    }
+}
+
+.home-card-info {
+    margin: 0.5rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1rem;
+}
+
+.home-card-info span {
+    font-weight: 700;
+}
+
+.home-card-info b {
+    color: #C89B3C;
+}
+
+.ex-detail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.5rem 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+@media (width < 1125px) {
+    .home-card-div {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (width < 750px) {
+    .home-card-div {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* resort-review */
+
+.resort-review {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 90%;
+    justify-self: center;
+    margin: 2rem 0;
+    background-color: #093b35;
+    color: #C89B3C;
+    padding: 1.5rem 3rem;
+    border-radius: 12px;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.resort-review p {
+    margin: 0;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2.2rem;
+}
+
+.resort-review span {
+    margin: 0;
+    color: white;
+}
+
+.review-cat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.review-logo {
+    font-weight: 200;
+    font-size: 3.5rem;
+    background-color: #0f534b;
+    padding: 0.3rem;
+    border-radius: 50%;
+}
+
+/* Photo */
+
+.gallery-head {
+    justify-self: center;
+    text-align: center;
+}
+
+.gallery-head p {
+    color: #C89B3C;
+    margin: 0;
+    font-weight: bold;
+}
+
+.gallery-head span {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 3.5rem;
+}
+
+.gallery-img {
+    width: 90%;
+    display: grid;
+    justify-self: center;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    margin-bottom: 2rem;
+    gap: 1rem;
+}
+
+.gallery-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+}
+
+#gallery-btn {
+    justify-self: center;
+    margin-bottom: 2.5rem;
+}
+
+#gallery-btn button {
+    border: none;
+    background-color: #093b35;
+    color: white;
+    font-weight: 600;
+    padding: 0.8rem 2rem;
+    border-radius: 12px;
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+        box-shadow: 0 2px 8px 8px #0F4C45;
+    }
+}
+
+@media (width < 1000px) {
+
+    .gallery-head span {
+        font-size: 2.5rem;
+    }
+
+    .gallery-img {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (width < 600px) {
+    .gallery-img {
+        grid-template-columns: auto;
+    }
+}
