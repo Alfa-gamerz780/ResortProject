@@ -29,6 +29,10 @@ const Home = () => {
   return (
     <div>
 
+      <div style={{
+        height: '4.5rem'
+      }}></div>
+
       <div>
         {/* Hero Section */}
         <div id='home-div'>

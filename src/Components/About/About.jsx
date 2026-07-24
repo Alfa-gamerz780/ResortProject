@@ -19,6 +19,11 @@ import { IoStarOutline } from "react-icons/io5";
 const About = () => {
   return (
     <div>
+
+      <div style={{
+        height: '6rem'
+      }}></div>
+
       <div className="about-div">
         <div className='about-p-img'>
           <div id='badge-about'>

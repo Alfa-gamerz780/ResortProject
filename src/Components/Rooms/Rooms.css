@@ -28,6 +28,9 @@
 
 .room-hero-img {
     background-image: url('../../assets/room7.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 70vh;
     width: 55%;
     border-radius: 32px 0 0 32px;
@@ -69,12 +72,13 @@
     .room-hero-txt {
         margin-bottom: 2rem;
         width: 90%;
+        padding-left: 0;
         text-align: left;
     }
 
     #room-hero-tag {
         margin-left: 2rem;
-        width: auto;
+        width: 60%;
     }
 }
 

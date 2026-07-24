@@ -4,8 +4,7 @@
     width: 90%;
     justify-content: center;
     gap: 3rem;
-    padding-top: 6.5rem;
-    margin-bottom: 4rem;
+    /* padding-top: 6.5rem; */
 }
 
 .about-p-img {
@@ -15,8 +14,11 @@
     align-self: center;
     width: 40%;
     border-radius: 15px;
-    height: 80vh;
+    height: 70vh;
     background-image: url('../../assets/about-img.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .about-p-img p {
@@ -95,17 +97,16 @@
     width: 90%;
     justify-self: center;
     margin-top: 3rem;
-    gap: 5rem 2rem;
-    margin-bottom: 5rem;
+    gap: 3rem 2rem;
+    margin-bottom: 3rem;
 }
 
 .resort-facilities {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     text-align: center;
-    height: 30vh;
 }
 
 .faci-logo {
