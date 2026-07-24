@@ -216,6 +216,22 @@
     font-family: "Cormorant Garamond", serif;
 }
 
+@media (width < 360px) {
+    .review-form-section{
+        width: 100%;
+    }
+
+    .review-form{
+        width: 90%;
+        justify-self: center;
+    }
+
+    .review-form-img{
+        width: 90%;
+        justify-self: center;
+    }
+}
+
 @media (width < 950px) {
     .review-form-section{
         grid-template-columns: 1fr;
