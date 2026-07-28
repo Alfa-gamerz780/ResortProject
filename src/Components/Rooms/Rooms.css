@@ -118,7 +118,7 @@
     width: 100%;
 
     &:hover {
-        transition: 0.7s ease;
+        transition: all 0.7s ease;
         transform: scale(1.1);
     }
 }

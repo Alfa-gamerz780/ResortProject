@@ -12,19 +12,14 @@ import {
   TiStarFullOutline,
   TiStarOutline,
 } from "react-icons/ti";
+import { useSelector } from "react-redux";
 
-const data = [
-  { id: 1, title: "Review 1" },
-  { id: 2, title: "Review 2" },
-  { id: 3, title: "Review 3" },
-  { id: 4, title: "Review 4" },
-  { id: 5, title: "Review 5" },
-  { id: 6, title: "Review 6" },
-  { id: 7, title: "Review 7" },
-];
+
 
 const Review = () => {
 
+
+  const reviewShow = useSelector((state) => state.review.reviews);
   const [start, setStart] = useState(0);
   const [cardsPerPage, setCardsPerPage] = useState(4);
 
@@ -42,8 +37,11 @@ const Review = () => {
       else if (window.innerWidth <= 992) {
         setCardsPerPage(3);
       } 
-      else {
+      else if (window.innerWidth <=1932){
         setCardsPerPage(4);
+      }
+      else{
+        setCardsPerPage(5);
       }
 
     };
@@ -59,17 +57,17 @@ const Review = () => {
 
   useEffect(() => {
 
-    if (start > data.length - cardsPerPage) {
-      setStart(Math.max(0, data.length - cardsPerPage));
+    if (start > reviewShow.length - cardsPerPage) {
+      setStart(Math.max(0, reviewShow.length - cardsPerPage));
     }
 
-  }, [cardsPerPage]);
+  }, [cardsPerPage, start, reviewShow.length]);
 
-  const visibleCards = data.slice(start, start + cardsPerPage);
+  const visibleCards = reviewShow.slice(start, start + cardsPerPage);
 
   const next = () => {
 
-    if (start + cardsPerPage < data.length) {
+    if (start + cardsPerPage < reviewShow.length) {
       setStart(start + cardsPerPage);
     }
 
@@ -109,9 +107,10 @@ const Review = () => {
 
       <div className="review-card-div">
 
-        {visibleCards.map((item) => (
+        {
+          visibleCards?.map((review) => (
 
-          <div className="review-card" key={item.id}>
+          <div className="review-card" key={review.id}>
 
             <div className="review-star mb-4">
               <TiStarFullOutline className="star" />
@@ -120,7 +119,7 @@ const Review = () => {
               <TiStarHalfOutline className="star" />
             </div>
 
-            <p>{item.title}</p>
+            <p>{review.title}</p>
 
             <hr />
 
@@ -148,7 +147,7 @@ const Review = () => {
 
         <button
           onClick={next}
-          disabled={start + cardsPerPage >= data.length}
+          disabled={start + cardsPerPage >= reviewShow.length}
         >
           <FaArrowRight />
         </button>

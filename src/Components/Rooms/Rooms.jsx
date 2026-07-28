@@ -3,6 +3,9 @@ import './Rooms.css'
 import room1 from '../../assets/room1.png';
 import Check from '../Check-Availability/Check'
 
+import { useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+
 
 import { RiPriceTag2Line, RiPriceTag3Fill } from "react-icons/ri";
 import { MdOutlineFreeBreakfast } from "react-icons/md";
@@ -15,6 +18,11 @@ import { MdOutlineBed } from "react-icons/md";
 
 
 const Rooms = () => {
+
+  
+  const rooms = useSelector((state) => state.room.rooms);
+  const navigate = useNavigate();
+
   return (
     <div>
 
@@ -65,45 +73,53 @@ const Rooms = () => {
           <div className='room-card-div'>
 
 
-            <div className="room-card">
+            {
+              rooms?.map((room) => {
+                return (
+                  <div className="room-card" key={room.id} onClick={() => {
+                    navigate(`../roomView/${room.id}`)
+                  }}>
 
 
-              <div className='room-card-img'>
-                <img src={room1} alt="" />
-              </div>
+                    <div className='room-card-img'>
+                      <img src={room.image} alt="" />
+                    </div>
 
-              <div style={{
-                padding: '0 1.5rem 1rem'
-              }}>
+                    <div style={{
+                      padding: '0 1.5rem 1rem'
+                    }}>
 
-                <div className='room-card-info'>
-                  <span>Ocean View Suite</span>
-                  <p><b>$250/</b>night</p>
-                </div>
+                      <div className='room-card-info'>
+                        <span>{room.title}</span>
+                        <p><b>{room.price}/</b>night</p>
+                      </div>
 
 
-                <div className='room-ex-detail'>
-                  <div className='room-detail'>
-                    <IoPersonOutline />
-                    <span>2 Guests</span>
+                      <div className='room-ex-detail'>
+                        <div className='room-detail'>
+                          <IoPersonOutline />
+                          <span>{room.guest} Guests</span>
+                        </div>
+
+                        <div className='room-detail'>
+                          <MdOutlineBed />
+                          <span>{room.bed}</span>
+                        </div>
+
+                        <div className='room-detail'>
+                          <LuSquareArrowOutUpRight />
+                          <span>{room.area} m<sup>2</sup></span>
+                        </div>
+                      </div>
+
+                      <p className='room-dec'>{room.dec}.</p>
+
+                      <button>View Details <i className="bi bi-arrow-right"></i></button>
+                    </div>
                   </div>
-
-                  <div className='room-detail'>
-                    <MdOutlineBed />
-                    <span>1 King Bed</span>
-                  </div>
-
-                  <div className='room-detail'>
-                    <LuSquareArrowOutUpRight />
-                    <span>21 m<sup>2</sup></span>
-                  </div>
-                </div>
-
-                <p className='room-dec'>Wake up to the stunning ocean and enjoy unmatched comfort.</p>
-
-                <button>View Details <i className="bi bi-arrow-right"></i></button>
-              </div>
-            </div>
+                )
+              })
+            }
 
 
           </div>

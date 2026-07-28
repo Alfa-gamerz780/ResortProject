@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Home.css';
+import '../Animation.css'
 import herosection from '../../assets/Herosection.png';
 import reward from '../../assets/vector-award.png';
 import room1 from '../../assets/room1.png';
@@ -19,12 +20,13 @@ import { LuSquareArrowOutUpRight } from "react-icons/lu";
 import { FaRegStar } from "react-icons/fa6";
 import { BsGeoAlt } from "react-icons/bs";
 import Check from '../Check-Availability/Check';
+import { useSelector } from 'react-redux';
 
 const Home = () => {
 
-  
-   const navigate = useNavigate()
-  
+  const rooms = useSelector((state) => state.room.rooms);
+  const navigate = useNavigate()
+
 
   return (
     <div>
@@ -57,7 +59,7 @@ const Home = () => {
 
 
         {/* Check In Section */}
-        <Check/>
+        <Check />
 
 
       </div>
@@ -131,37 +133,43 @@ const Home = () => {
           </div>
 
           <div className='room-btn'>
-            <button onClick={() => {navigate('rooms')}}>View All Rooms</button>
+            <button onClick={() => { navigate('rooms') }}>View All Rooms</button>
           </div>
         </div>
 
         <div className="home-card-div">
 
-          <div className="home-card">
-            <div className='home-card-img'>
-              <img src={room1} alt="" />
-            </div>
-            <div className='home-card-info'>
-              <span>Ocean View Suite</span>
-              <p><b>$250/</b>night</p>
-            </div>
-            <div className='ex-detail'>
-              <div className='detail'>
-                <IoPersonOutline />
-                <span>2 Guests</span>
-              </div>
+          {
+            rooms.slice(1,4).map((room) => {
+              return (
+                <div className="home-card" key={room.id} onClick={() => {navigate(`/roomView/${room.id}`)}}>
+                  <div className='home-card-img'>
+                    <img src={room.image} alt="" />
+                  </div>
+                  <div className='home-card-info'>
+                    <span>{room.title}</span>
+                    <p><b>{room.price}/</b>night</p>
+                  </div>
+                  <div className='ex-detail'>
+                    <div className='detail'>
+                      <IoPersonOutline />
+                      <span>{room.guest} Guests</span>
+                    </div>
 
-              <div className='detail'>
-                <MdOutlineBed />
-                <span>1 King Bed</span>
-              </div>
+                    <div className='detail'>
+                      <MdOutlineBed />
+                      <span>{room.bed}</span>
+                    </div>
 
-              <div className='detail'>
-                <LuSquareArrowOutUpRight />
-                <span>21 m<sup>2</sup></span>
-              </div>
-            </div>
-          </div>
+                    <div className='detail'>
+                      <LuSquareArrowOutUpRight />
+                      <span>{room.area}m<sup>2</sup></span>
+                    </div>
+                  </div>
+                </div>
+              )
+            })
+          }
 
 
 
@@ -176,9 +184,9 @@ const Home = () => {
 
 
       {/* Resort Review */}
-      <div className='resort-review'> 
+      <div className='resort-review'>
         <div className='review-cat'>
-          <BsPeople className='review-logo'/>
+          <BsPeople className='review-logo' />
           <div>
             <p>1200+</p>
             <span>Happy Guests</span>
@@ -186,7 +194,7 @@ const Home = () => {
         </div>
 
         <div className='review-cat'>
-          <MdOutlineBed className='review-logo'/>
+          <MdOutlineBed className='review-logo' />
           <div>
             <p>50+</p>
             <span>Luxury Rooms</span>
@@ -194,7 +202,7 @@ const Home = () => {
         </div>
 
         <div className='review-cat'>
-          <FaRegStar className='review-logo'/>
+          <FaRegStar className='review-logo' />
           <div>
             <p>4.8/5</p>
             <span>Guest Rating</span>
@@ -202,7 +210,7 @@ const Home = () => {
         </div>
 
         <div className='review-cat'>
-          <BsGeoAlt className='review-logo'/>
+          <BsGeoAlt className='review-logo' />
           <div>
             <p>20+</p>
             <span>Awards Won</span>
@@ -234,13 +242,13 @@ const Home = () => {
         </div>
 
         <div id='gallery-btn'>
-          <button onClick={() => {navigate('gallery')}}>View Full Gallery <i class="bi bi-arrow-right"></i></button>
+          <button onClick={() => { navigate('gallery') }}>View Full Gallery <i class="bi bi-arrow-right"></i></button>
         </div>
       </div>
 
 
-     
-      
+
+
 
     </div>
   )

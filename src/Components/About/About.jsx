@@ -21,7 +21,7 @@ const About = () => {
     <div>
 
       <div style={{
-        height: '6rem'
+        height: '6.2rem'
       }}></div>
 
       <div className="about-div">

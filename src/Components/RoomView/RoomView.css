@@ -1,0 +1,45 @@
+.view-room-div{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    width: 90%;
+    justify-self: center;
+    gap: 2rem;
+}
+
+.view-room-img img{
+    width: 100%;
+    border-radius: 22px;
+}
+
+.view-room-info{
+    padding: 1rem;
+}
+
+.view-room-info > p{
+    color: #0F4C45;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 3rem;
+    margin: 0;
+}
+
+.viewRoom-ex-detail{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 2rem;
+}
+
+.viewRoom-detail{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+    font-size: 2rem;
+    color: #C89B3C;
+}
+
+.viewRoom-detail span{
+    color: black;
+    font-size: 1rem;
+    margin: 0;
+}

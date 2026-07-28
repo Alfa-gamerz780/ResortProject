@@ -41,7 +41,7 @@
 }
 
 .check-in-option input,
-select {
+.check-in-option select {
     width: 8rem;
     border: none;
 }
@@ -72,7 +72,7 @@ select {
 
 
     .check-in-option input,
-    select {
+    .check-in-option select {
         width: 12rem;
     }
 }
@@ -85,7 +85,7 @@ select {
 
 
     .check-in-option input,
-    select {
+    .check-in-option select {
         width: 8rem;
     }
 }
