@@ -53,11 +53,6 @@ const router = createBrowserRouter([
             }
         ],
     },
-    {
-        path: "/resortHome",
-
-    }
-
 ]);
 
 export default router;
