@@ -1,23 +1,74 @@
-// const review = require('../Models/review.model')
-import review from '../Models/review.model.js'
+import Review from "../Models/review.model.js";
 
 const addReview = async (req, res) => {
-
     try {
         const data = req.body;
-        await review.create(data);
+
+        const review = await Review.create({
+            name: data.username,
+            email: data.email,
+            message: data.message
+        });
 
         res.status(201).json({
-            status: true,
-            message: 'review given',
+            success: true,
+            message: "Review added successfully",
+            data: review,
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Review not added",
+            error: error.message,
+        });
+    }
+};
+
+
+const getReview = async (req, res) =>{
+    try {
+        const reviews = await Review.find();
+
+        res.status(200).json({
+            success: true,
+            message: "Review fetched successfully",
+            reviews,
+        });
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            message:"can't fetch review",
+            success: false,
         })
     }
-    catch (error) {
-        res.status(400).json({
+};
+
+const dropReview = async (req, res) =>{
+    try {
+        const { id } = req.params;
+
+        const dropReview = await Review.findByIdAndDelete(id);
+
+        if (!dropReview){
+            return res.status(404).json({
+                status: false,
+                message: "Review not found"
+            });
+        }
+
+        res.status(200).json({
+            status: true,
+            message: "Review Deleted"
+        })
+
+    } catch (error) {
+        res.status(500).json({
             status: false,
-            message: "Review can't add",
+            message: "Something went wrong"
         })
     }
 }
 
-export {addReview};
+export { addReview , getReview, dropReview };

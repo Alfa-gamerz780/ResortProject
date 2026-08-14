@@ -5,18 +5,22 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import ScrollToTop from "../../Frontend/src/Components/ScrollToTop";
 import Navbar from './Components/Navbar/Navbar';
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 function App() {
- 
+
 
   return (
-    <>
-     <ScrollToTop/>
-     <Navbar/>
-     <Outlet/>
-    </>
+    <div>
+      <ToastContainer/>
+      <ScrollToTop />
+      <Navbar />
+      <div className='app-body'>
+        <Outlet />
+      </div>
+    </div>
   )
 }
 

@@ -1,24 +1,29 @@
-// const express = require('express');
-// const cors = require("cors");
-// const reviewRouter = require('./Routes/review.routes')
-// const adminRouter = require('./Routes/admin.route')
 import express from 'express';
 import cors from 'cors';
-import reviewRouter from './Routes/review.routes.js'
-import adminRouter from './Routes/admin.route.js'
+import cookieParser from 'cookie-parser';
+
+
+import reviewRouter from './Routes/review.routes.js';
+import adminRouter from './Routes/admin.route.js';
 
 const app = express();
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: process.env.CORS_ORIGIN,
     credentials: true,
 }));
 
 
-app.use(express.json());
+app.use(express.json({limit: "16kb"}));
+
+app.use(express.urlencoded({extended: true, limit: "16kb"}));
+
+app.use(express.static("public"));
+
+app.use(cookieParser());
 
 // review router
-app.use('/api/user', reviewRouter);
+app.use('/api/review', reviewRouter);
 
 // admin add
 app.use('/api/admin', adminRouter);

@@ -131,6 +131,12 @@
     border-radius: 50%;
 }
 
+.card-date-stayed{
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
 /* Review Form  */
 .review-form-section{
     display: grid;

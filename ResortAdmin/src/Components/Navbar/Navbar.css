@@ -44,3 +44,50 @@
     color: white;
     font-weight: 700;
 }
+
+#nav-toggle {
+    border: none;
+    background-color: #0F4C45;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+    display: none;
+}
+
+@media (width < 1100px) {
+    .navbar-div{
+        justify-content: end;
+        gap: 2rem;
+    }
+
+    #nav-ul {
+        display: none;
+        position: absolute;
+        top: 4.5rem;
+        right: 1rem;
+        padding: 1rem;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #0f4c45;
+        width: 20%;
+        border-radius: 12px;
+    }
+
+    #nav-toggle {
+        display: block;
+    }
+}
+
+@media (width< 650px) {
+    #nav-ul{
+        width: 30%;
+    }
+}
+
+
+@media (width< 450px) {
+    #nav-ul{
+        width: 50%;
+    }
+}

@@ -12,7 +12,7 @@ const loginSchema = new mongoose.Schema({
         required: true,
     },
 
-});
+}, {timestamps: true});
 
 const Login = mongoose.model('Login', loginSchema);
 

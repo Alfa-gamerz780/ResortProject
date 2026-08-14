@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./Review.css";
+import { useForm } from "react-hook-form"
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { addReview, getReview } from "../../features/ReviewSlice";
 
 import {
   FaCalendarAlt,
@@ -12,7 +16,6 @@ import {
   TiStarFullOutline,
   TiStarOutline,
 } from "react-icons/ti";
-import { useSelector } from "react-redux";
 
 
 
@@ -22,7 +25,36 @@ const Review = () => {
   const reviewShow = useSelector((state) => state.review.reviews);
   const [start, setStart] = useState(0);
   const [cardsPerPage, setCardsPerPage] = useState(4);
+  const dispatch = useDispatch();
 
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm()
+
+  const onSubmit = async (data) => {
+    console.log("Form Data:", data);
+
+    try {
+      await dispatch(addReview(data)).unwrap();
+
+      toast.success("Review Added Successfully")
+
+      reset();
+
+    } catch (error) {
+      console.log("Something went wrong", error)
+    }
+
+    // reset();
+  }
+
+  useEffect(() => {
+    dispatch(getReview());
+  }, [dispatch]);
 
   useEffect(() => {
 
@@ -30,17 +62,17 @@ const Review = () => {
 
       if (window.innerWidth <= 576) {
         setCardsPerPage(1);
-      } 
+      }
       else if (window.innerWidth <= 768) {
         setCardsPerPage(2);
-      } 
+      }
       else if (window.innerWidth <= 992) {
         setCardsPerPage(3);
-      } 
-      else if (window.innerWidth <=1932){
+      }
+      else if (window.innerWidth <= 1932) {
         setCardsPerPage(4);
       }
-      else{
+      else {
         setCardsPerPage(5);
       }
 
@@ -107,32 +139,40 @@ const Review = () => {
 
       <div className="review-card-div">
 
+
+
         {
+
           visibleCards?.map((review) => (
 
-          <div className="review-card" key={review.id}>
+            <div className="review-card" key={review._id}>
 
-            <div className="review-star mb-4">
-              <TiStarFullOutline className="star" />
-              <TiStarFullOutline className="star" />
-              <TiStarFullOutline className="star" />
-              <TiStarHalfOutline className="star" />
+              <div className="review-star mb-4">
+                <TiStarFullOutline className="star" />
+                <TiStarFullOutline className="star" />
+                <TiStarFullOutline className="star" />
+                <TiStarHalfOutline className="star" />
+              </div>
+
+              <p>{review.message}</p>
+
+              <hr />
+
+              <p><b>{review.name}</b></p>
+
+              <div className="card-date-stayed">
+                <FaCalendarAlt />
+                <span>{new Date(review.createdAt).toLocaleString("en-IN", {
+                  timeZone: "Asia/Kolkata",
+                  day: "2-digit",
+                  month: "short",
+                  year: "numeric",
+                })}</span>
+              </div>
+
             </div>
 
-            <p>{review.title}</p>
-
-            <hr />
-
-            <p><b>Atharv Keshari</b></p>
-
-            <div className="card-date-stayed">
-              <FaCalendarAlt />
-              <span>Stayed January 2026</span>
-            </div>
-
-          </div>
-
-        ))}
+          ))}
 
       </div>
 
@@ -156,16 +196,46 @@ const Review = () => {
 
       <div className="review-form-section">
 
-        <div className="review-form">
+        <form className="review-form" onSubmit={handleSubmit(onSubmit)}>
           <h2>Share Your Experience</h2>
           <div className="review-inp">
 
             <div className="review-inp-info">
-              <input type="text" placeholder="Your Name" />
-              <input type="email" placeholder="Your Email" />
+              <input
+                type="text"
+                placeholder="Your Name"
+                {...register(
+                  "username",
+                  {
+                    required: true,
+
+                  }
+                )}
+              />
+              <input
+                type="email"
+                placeholder="Your Email"
+                {...register(
+                  "email",
+                  {
+                    required: true,
+                    minLength: 8
+                  }
+                )}
+              />
+              {/* {errors.email && ()} */}
             </div>
 
-            <textarea placeholder="Your Experience"></textarea>
+            <textarea
+              placeholder="Your Experience"
+              {...register(
+                "message",
+                {
+                  required: true,
+
+                }
+              )}
+            ></textarea>
 
           </div>
 
@@ -177,9 +247,9 @@ const Review = () => {
             <TiStarOutline />
           </div>
 
-          <button type="button">Submit</button>
+          <button type="submit">Submit</button>
 
-        </div>
+        </form>
 
 
         <div className="review-form-img">

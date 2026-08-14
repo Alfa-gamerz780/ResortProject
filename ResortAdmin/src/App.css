@@ -1,0 +1,20 @@
+.app-body{
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+}
+
+.app-body p{
+    margin: 0;
+}
+
+.app-body button{
+    border: none;
+}
+
+@media (width< 500px) {
+    .app-body{
+        width: 90%;
+    }
+}

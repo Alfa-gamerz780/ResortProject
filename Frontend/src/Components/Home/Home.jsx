@@ -242,7 +242,7 @@ const Home = () => {
         </div>
 
         <div id='gallery-btn'>
-          <button onClick={() => { navigate('gallery') }}>View Full Gallery <i class="bi bi-arrow-right"></i></button>
+          <button onClick={() => { navigate('gallery') }}>View Full Gallery <i className="bi bi-arrow-right"></i></button>
         </div>
       </div>
 
