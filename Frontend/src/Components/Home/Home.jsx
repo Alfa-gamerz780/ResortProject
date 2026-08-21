@@ -31,10 +31,6 @@ const Home = () => {
   return (
     <div>
 
-      <div style={{
-        height: '4.5rem'
-      }}></div>
-
       <div>
         {/* Hero Section */}
         <div id='home-div'>
@@ -140,9 +136,9 @@ const Home = () => {
         <div className="home-card-div">
 
           {
-            rooms.slice(1,4).map((room) => {
+            rooms.slice(1, 4).map((room) => {
               return (
-                <div className="home-card" key={room.id} onClick={() => {navigate(`/roomView/${room.id}`)}}>
+                <div className="home-card" key={room.id} onClick={() => { navigate(`/roomView/${room.id}`) }}>
                   <div className='home-card-img'>
                     <img src={room.image} alt="" />
                   </div>

@@ -1,0 +1,15 @@
+.app-div{
+   height: 6.2rem;
+}
+
+@media (width < 500px) {
+    .app-div{
+        height: 5rem;
+    }
+}
+
+@media (width < 350px) {
+    .app-div{
+        height: 4.5rem;
+    }
+}

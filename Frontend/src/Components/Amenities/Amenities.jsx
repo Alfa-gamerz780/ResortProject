@@ -23,11 +23,6 @@ const Amenities = () => {
   return (
     <div>
 
-      <div style={{
-        height: '6rem'
-      }}></div>
-
-
       <div className='amenities-hero-div'>
 
         <div className='amenities-hero-txt'>

@@ -17,17 +17,20 @@ const addReview = async (req, res) => {
         });
 
     } catch (error) {
+
         res.status(500).json({
             success: false,
             message: "Review not added",
             error: error.message,
         });
+
     }
 };
 
 
-const getReview = async (req, res) =>{
+const getReview = async (req, res) => {
     try {
+
         const reviews = await Review.find();
 
         res.status(200).json({
@@ -37,21 +40,24 @@ const getReview = async (req, res) =>{
         });
 
     } catch (error) {
-        console.log(error)
+
         res.status(500).json({
-            message:"can't fetch review",
             success: false,
-        })
+            message: "can't fetch review",
+        });
+
     }
 };
 
-const dropReview = async (req, res) =>{
+
+const dropReview = async (req, res) => {
     try {
+
         const { id } = req.params;
 
         const dropReview = await Review.findByIdAndDelete(id);
 
-        if (!dropReview){
+        if (!dropReview) {
             return res.status(404).json({
                 status: false,
                 message: "Review not found"
@@ -61,14 +67,17 @@ const dropReview = async (req, res) =>{
         res.status(200).json({
             status: true,
             message: "Review Deleted"
-        })
+        });
 
     } catch (error) {
+
         res.status(500).json({
             status: false,
             message: "Something went wrong"
-        })
-    }
-}
+        });
 
-export { addReview , getReview, dropReview };
+    }
+};
+
+
+export { addReview, getReview, dropReview };

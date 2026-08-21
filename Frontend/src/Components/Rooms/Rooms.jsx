@@ -3,7 +3,7 @@ import './Rooms.css'
 import room1 from '../../assets/room1.png';
 import Check from '../Check-Availability/Check'
 
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 
 
@@ -15,6 +15,8 @@ import { IoPersonOutline } from "react-icons/io5";
 import { BsPeople } from "react-icons/bs";
 import { LuSquareArrowOutUpRight } from "react-icons/lu";
 import { MdOutlineBed } from "react-icons/md";
+import { useEffect } from 'react';
+import { getRoom } from '../../features/RoomSlice';
 
 
 const Rooms = () => {
@@ -22,6 +24,11 @@ const Rooms = () => {
   
   const rooms = useSelector((state) => state.room.rooms);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() =>{
+    dispatch(getRoom())
+  },[dispatch])
 
   return (
     <div>
@@ -76,13 +83,13 @@ const Rooms = () => {
             {
               rooms?.map((room) => {
                 return (
-                  <div className="room-card" key={room.id} onClick={() => {
-                    navigate(`../roomView/${room.id}`)
+                  <div className="room-card" key={room._id} onClick={() => {
+                    navigate(`../roomView/${room._id}`)
                   }}>
 
 
                     <div className='room-card-img'>
-                      <img src={room.image} alt="" />
+                      <img src={room.roomImage} alt="" />
                     </div>
 
                     <div style={{
@@ -90,29 +97,29 @@ const Rooms = () => {
                     }}>
 
                       <div className='room-card-info'>
-                        <span>{room.title}</span>
-                        <p><b>{room.price}/</b>night</p>
+                        <span>{room.roomName}</span>
+                        <p><b>{room.roomPrice}/</b>night</p>
                       </div>
 
 
                       <div className='room-ex-detail'>
                         <div className='room-detail'>
                           <IoPersonOutline />
-                          <span>{room.guest} Guests</span>
+                          <span>{room.noOfGuest} Guests</span>
                         </div>
 
                         <div className='room-detail'>
                           <MdOutlineBed />
-                          <span>{room.bed}</span>
+                          <span>{room.nameOfBed}</span>
                         </div>
 
                         <div className='room-detail'>
                           <LuSquareArrowOutUpRight />
-                          <span>{room.area} m<sup>2</sup></span>
+                          <span>{room.roomArea} m<sup>2</sup></span>
                         </div>
                       </div>
 
-                      <p className='room-dec'>{room.dec}.</p>
+                      <p className='room-dec'>{room.roomDescription}.</p>
 
                       <button>View Details <i className="bi bi-arrow-right"></i></button>
                     </div>

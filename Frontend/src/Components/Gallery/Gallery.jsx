@@ -13,9 +13,6 @@ import imgRoom4 from '../../assets/room7.png'
 const Gallery = () => {
   return (
     <div >
-      <div style={{
-        height: '6rem'
-      }}></div>
 
       <div className='gallery-hero-div mb-5' >
         <span style={{

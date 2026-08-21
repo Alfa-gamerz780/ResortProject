@@ -9,6 +9,7 @@ import About from "../Components/About/About"
 import Contact from "../Components/Contact/Contact";
 import Review from "../Components/Review/Review"
 import RoomView from '../Components/RoomView/RoomView'
+import Booking from "../Components/Booking/Booking";
 
 const router = createBrowserRouter([
     {
@@ -25,34 +26,38 @@ const router = createBrowserRouter([
             },
             {
                 path: 'gallery',
-                element: <Gallery/>
+                element: <Gallery />
             },
             {
                 path: 'rooms',
-                element: <Rooms/>
+                element: <Rooms />
             },
             {
                 path: 'amenities',
-                element: <Amenities/>
+                element: <Amenities />
             },
             {
                 path: 'about',
-                element: <About/>
+                element: <About />
             },
             {
                 path: 'contact',
-                element:  <Contact/>
+                element: <Contact />
             },
             {
                 path: 'review',
-                element: <Review/>
+                element: <Review />
             },
             {
                 path: 'roomView/:id',
-                element: <RoomView/>
-            }
+                element: <RoomView />
+            },
         ],
     },
+    {
+        path: '/roomBook/:id',
+        element: <Booking />
+    }
 ]);
 
 export default router;

@@ -115,6 +115,10 @@
     border-radius: 12px;
     border: none;
     margin: 1rem 0 0.3rem;
+    transition: all 0.3s ease-in-out;
+    &:hover{
+        box-shadow: 0 0 15px #08312c;
+    }
 }
 
 @media (width < 1080px) {
@@ -151,4 +155,18 @@
     color: white;
     border-radius: 12px;
     border: none;
+    transition: all 0.3s ease-in-out;
+    &:hover{
+        box-shadow: 0 0 15px #08312c;
+    }
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }

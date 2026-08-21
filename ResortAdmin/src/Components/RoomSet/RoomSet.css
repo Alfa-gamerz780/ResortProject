@@ -1,0 +1,196 @@
+.room-nav{
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0 2rem;
+}
+
+.room-nav button{
+    background: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+
+.home-card-div {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    display: grid;
+    width: 90%;
+    gap: 2rem;
+    justify-self: center;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.home-card {
+    width: 100%;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 0 3px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.home-card-div p {
+    margin: 0;
+}
+
+.home-card-img {
+    overflow: hidden;
+}
+
+.home-card-img img {
+    width: 100%;
+    /* height: 10rem; */
+    &:hover {
+        transition: 0.7s ease;
+        transform: scale(1.1);
+    }
+}
+
+.home-card-info {
+    margin: 0.5rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1rem;
+}
+
+.home-card-info span {
+    font-weight: 700;
+}
+
+.home-card-info b {
+    color: #C89B3C;
+}
+
+.ex-detail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.5rem 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.room-btn{
+    display: flex;
+    gap: 1rem;
+    justify-self: end;
+    margin: 1rem 1.5rem;
+}
+
+.room-btn button{
+    padding: 0.3rem 1rem;
+    border-radius: 12px;
+    color: white;
+    font-weight: bold;
+    border: none;
+}
+
+#edit-btn{
+    background-color: #0F4C45;
+    &:hover{
+        box-shadow: 0 0 12px #0F4C45;
+    }
+}
+
+#del-btn{
+    background-color: red;
+    &:hover{
+        box-shadow: 0 0 12px red;
+    }
+}
+
+@media (width < 1125px) {
+    .home-card-div {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (width < 750px) {
+    .home-card-div {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Form section */
+.room-form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    justify-self: center; 
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.room-form-input{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(2,1fr);
+    gap: 2rem 1rem;
+    width: 100%;
+}
+
+.room-form-input input{
+    width: 30%;
+    padding: 1.5rem 1rem;
+    border-radius: 1rem;
+    border: 2px solid gray;
+    font-weight: bold;
+}
+
+.room-form textarea{
+    width: 61%;
+    padding: 1rem;
+    border-radius: 1rem;
+    font-weight: bold;
+    height: 25vh;
+    border: 2px solid gray;
+    resize: none;
+}
+
+.room-form button{
+    background-color: #C89B3C;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 0.7rem;
+}
+
+@media (width < 950px) {
+    .room-form-input input{
+        width: 50%;
+    }
+
+    .room-form textarea{
+        width: 100%;
+        height: 15vh;
+    }
+}
+
+@media (width < 700px) {
+    .room-form-input{
+        flex-direction: column;
+    }
+    .room-form-input input{
+        width: 100%;
+    }
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+

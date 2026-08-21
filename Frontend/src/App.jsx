@@ -15,6 +15,7 @@ function App() {
       <ScrollToTop />
       <ToastContainer />
       <Navbar />
+      <div className="app-div"></div>
       <Outlet />
       <Footer />
     </div>

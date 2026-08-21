@@ -20,10 +20,6 @@ const About = () => {
   return (
     <div>
 
-      <div style={{
-        height: '6.2rem'
-      }}></div>
-
       <div className="about-div">
         <div className='about-p-img'>
           <div id='badge-about'>

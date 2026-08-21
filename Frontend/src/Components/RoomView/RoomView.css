@@ -1,35 +1,38 @@
-.view-room-div{
+.view-room-div {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     width: 90%;
     justify-self: center;
     gap: 2rem;
 }
 
-.view-room-img img{
+.view-room-img img {
     width: 100%;
     border-radius: 22px;
 }
 
-.view-room-info{
-    padding: 1rem;
+.view-room-info {
+    padding: 0rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.view-room-info > p{
+.view-room-info p {
     color: #0F4C45;
     font-family: "Cormorant Garamond", serif;
     font-size: 3rem;
     margin: 0;
 }
 
-.viewRoom-ex-detail{
+.viewRoom-ex-detail {
     display: flex;
     align-items: center;
     justify-content: start;
     gap: 2rem;
 }
 
-.viewRoom-detail{
+.viewRoom-detail {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -38,8 +41,38 @@
     color: #C89B3C;
 }
 
-.viewRoom-detail span{
+.viewRoom-detail span {
     color: black;
     font-size: 1rem;
     margin: 0;
+}
+
+.room-view-book {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.room-view-book button {
+    border: none;
+    background-color: #0F4C45;
+    color: white;
+    width: 90%;
+    padding: 1rem 1.5rem;
+    font-weight: bold;
+    border-radius: 16px;
+    margin: 1rem 0rem;
+}
+
+
+@media (width < 950px) {
+    .view-room-div {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (width< 500px) {
+    .viewRoom-ex-detail{
+        flex-wrap: wrap;
+    }
 }

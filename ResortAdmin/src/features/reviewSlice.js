@@ -15,14 +15,14 @@ export const getReview = createAsyncThunk(
             "http://localhost:3000/api/review/all",
         );
 
-        return response.data;
+        return response.data.reviews || [];
     }
 );
 
 export const dropReview = createAsyncThunk(
     "review/dropReview",
 
-    async (id , {rejectWithValue}) =>{
+    async (id, { rejectWithValue }) => {
         try {
             const response = await fetch(
                 `http://localhost:3000/api/review/remove/${id}`,
@@ -55,8 +55,19 @@ const reviewSlice = createSlice({
 
     extraReducers: (builder) => {
         builder
+            .addCase(getReview.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+
             .addCase(getReview.fulfilled, (state, action) => {
-                state.reviews = action.payload.reviews;
+                state.loading = false;
+                state.reviews = action.payload;
+            })
+
+            .addCase(getReview.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
             })
 
             .addCase(dropReview.pending, (state) => {
@@ -65,21 +76,16 @@ const reviewSlice = createSlice({
             })
 
             .addCase(dropReview.fulfilled, (state, action) => {
-
                 state.loading = false;
 
                 state.reviews = state.reviews.filter(
                     (review) => review._id !== action.payload.id
                 );
-
             })
 
             .addCase(dropReview.rejected, (state, action) => {
-
                 state.loading = false;
-
                 state.error = action.payload;
-
             });
     },
 });

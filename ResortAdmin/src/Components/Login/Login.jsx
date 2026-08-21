@@ -1,157 +1,200 @@
-import React, { useState } from 'react'
-import './Login.css'
-import '../animation.css'
-
+import React, { useState } from 'react';
+import './Login.css';
+import '../animation.css';
 import { useDispatch } from 'react-redux';
-import { loginSuccess } from '../../features/authSlice';
+import { loginThunk } from '../../features/authSlice';
 import { useNavigate } from 'react-router-dom';
-import axios from "axios"
-import { useForm } from "react-hook-form"
+import { toast } from 'react-toastify'
 
-import { FaEye, FaEyeSlash } from "react-icons/fa";
 
+import { useForm } from 'react-hook-form';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 
 const Login = () => {
+
   const [toggle, setToggle] = useState('password');
-  const [empID, setEmpID] = useState("");
-  const [password, setPassword] = useState("");
-  const [logined, setlogin] = useState(true);
+  const [serverError, setServerError] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  function handleToggle(e) {
-    toggle === 'password' ?
-    setToggle('text') :
-    setToggle('password')
-  }
 
-  
-  
   const {
     register,
     handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm()
-  
-  const onSubmit = (data) => {
-    // data.preventDefault();
-    console.log(data)
-  }
+    reset,
+    formState: {
+      errors,
+      isSubmitting
+    }
+  } = useForm();
 
 
-  // async function handleLogin(e) {
-  //   e.preventDefault();
-  //   console.log("click")
-  //   try {
-  //     const res = await axios.post(
-  //       "http://localhost:3000/api/admin/add",
-  //       {
-  //         empID,
-  //         password,
-  //       });
+  const handleToggle = () => {
 
-  //     dispatch(loginSuccess(res.data));
+    setToggle((prev) =>
+      prev === 'password'
+        ? 'text'
+        : 'password'
+    );
 
-  //     localStorage.setItem(
-  //       'token',
-  //       res.data.token
-  //     );
+  };
 
-  //     setEmpID("");
-  //     setPassword("");
+  const onSubmit = async (data) => {
+    try {
+      setServerError("");
 
-  //     navigate('../')
-  //   }
-  //   catch (error) {
-  //     console.log(error)
-  //   }
-  // };
+      const response = await dispatch(
+        loginThunk({
+          empEmail: data.empEmail,
+          password: data.password
+        })
+      ).unwrap();
 
+      if (response.token) {
+        localStorage.setItem("token", response.token);
+      }
+
+      toast.success("Login Successfully");
+
+      navigate("/home");
+
+      reset();
+
+    } catch (error) {
+      setServerError(
+        error || "Invalid Email or Password"
+      );
+    }
+  };
 
   return (
-    <div className='login-div'>
-      <div id='login-form-div'>
-        {
-          logined ?
 
-            <form action="" className='login-form' onSubmit={handleSubmit(onSubmit)}>
-              <h2 style={{
-                color: "white",
-                margin: "0",
-                padding: '0'
-              }}>Login</h2>
-              <input
-                type="text"
-                placeholder='Enter ID'
-                {...register(
-                  "username",
-                  {
-                    required: true,
-                  }
-                )}
-                />
-                {errors.username && <div className='error-msg'>{errors.password.username}</div>}
-              <div className='pass-div'>
-                <input
-                  type={toggle}
-                  placeholder='Enter Password'
-                  {...register(
-                    "password",
-                    {
-                      required: true,
-                      minLength: { value: 8, message: "Min Length should be 8" }
-                    }
-                  )}
-                />
-                {errors.password && formError()}
-                <button type='button' onClick={(e) => handleToggle(e)}
-                >
-                  {
-                    toggle === 'password' ?
-                      <FaEye /> :
-                      <FaEyeSlash />
-                  }
-                </button>
-              </div>
-              <button className='login-btn'>Login</button>
-            </form>
-            :
-            <form action="" className='login-form'>
-              <h2 style={{
-                color: "white",
-                margin: "0",
-                padding: '0'
-              }}>Add Employee</h2>
-              <input
-                type="text"
-                placeholder='Enter ID'
-                value={empID}
-                onChange={(e) => setEmpID(e.target.value)}
-              />
-              <div className='pass-div'>
-                <input
-                  type={toggle}
-                  placeholder='Enter Password'
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <button onClick={(e) => handleToggle(e)}
-                >
-                  {
-                    toggle === 'password' ?
-                      <FaEye /> :
-                      <FaEyeSlash />
-                  }
-                </button>
-              </div>
-              <button className='login-btn' onClick={(e) => { handleLogin(e) }}>Login</button>
-            </form>
-        }
+    <div className="login-div">
+
+      <div id="login-form-div">
+
+        <form
+          className="login-form"
+          onSubmit={handleSubmit(onSubmit)}
+        >
+
+          <h2
+            style={{
+              color: "white",
+              margin: "0",
+              padding: "0"
+            }}
+          >
+            Login
+          </h2>
+
+          {serverError && (
+
+            <div className="error-msg">
+
+              {serverError}
+
+            </div>
+
+          )}
+
+
+          <input
+            type="email"
+            placeholder="Enter Email ID"
+
+            {...register("empEmail", {
+              required:
+                "Employee Email ID is required"
+            })}
+          />
+
+
+          {errors.empEmail && (
+
+            <div className="error-msg">
+
+              {errors.empEmail.message}
+
+            </div>
+
+          )}
+
+          <div className="pass-div">
+
+            <input
+              type={toggle}
+              placeholder="Enter Password"
+
+              {...register("password", {
+                required:
+                  "Password is required",
+
+                minLength: {
+                  value: 8,
+
+                  message:
+                    "Password must be at least 8 characters"
+                }
+              })}
+            />
+
+
+            <button
+              type="button"
+              onClick={handleToggle}
+            >
+
+              {toggle === "password" ? (
+
+                <FaEye />
+
+              ) : (
+
+                <FaEyeSlash />
+
+              )}
+
+            </button>
+
+          </div>
+
+
+          {errors.password && (
+
+            <div className="error-msg">
+
+              {errors.password.message}
+
+            </div>
+
+          )}
+
+
+          <button
+            type="submit"
+            className="login-btn"
+            disabled={isSubmitting}
+          >
+
+            {isSubmitting
+              ? "Logging in..."
+              : "Login"
+            }
+
+          </button>
+
+
+        </form>
+
       </div>
-    </div>
-  )
-}
 
-export default Login
+    </div>
+
+  );
+
+};
+
+
+export default Login;

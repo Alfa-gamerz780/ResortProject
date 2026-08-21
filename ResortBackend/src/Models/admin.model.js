@@ -1,8 +1,7 @@
-// const mongoose = require('mongoose');
 import mongoose from "mongoose";
 
 const loginSchema = new mongoose.Schema({
-    empID:{
+    empEmail:{
         type: String,
         required: true,
         unique : true,

@@ -3,7 +3,7 @@ import './Review.css'
 import { FaCalendarDays } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { dropReview, getReview } from '../../features/reviewSlice';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 const Review = () => {
   const reviewShow = useSelector((state) => state.review.reviews);

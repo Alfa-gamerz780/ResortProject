@@ -1,0 +1,55 @@
+.booking-body{
+    padding: 1rem 0;
+    width: 95%;
+    justify-self: center;
+}
+
+.booking-head{
+    width: 65%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 3rem;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 12px gray;
+}
+
+.book-room-img {
+    width: 30%;
+}
+
+.book-room-img img{
+    width: 100%;
+    border-radius: 1rem;
+}
+
+.book-room-details p {
+    color: #0F4C45;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 3rem;
+    margin: 0;
+}
+
+
+.bookRoom-ex-detail {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 2rem;
+}
+
+.bookRoom-detail {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+    font-size: 2rem;
+    color: #C89B3C;
+}
+
+.bookRoom-detail span {
+    color: black;
+    font-size: 1rem;
+    margin: 0;
+}

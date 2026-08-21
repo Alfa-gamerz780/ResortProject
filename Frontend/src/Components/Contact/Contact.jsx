@@ -1,27 +1,43 @@
 import React from 'react'
 import './Contact.css'
+import { useForm } from 'react-hook-form';
+import { toast } from "react-toastify";
 
 import { MdOutlineMail } from "react-icons/md";
 import { FaPaperPlane } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addQuarry } from '../../features/Quarry.slice';
 
 
 
 const Contact = () => {
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  function handleMap(){
-    // navigate("https://maps.app.goo.gl/rxAwPuwZQ7Nmu6vr6")
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm()
+
+  const onSubmit = async (data) => {
+    try {
+      await dispatch(addQuarry(data)).unwrap();
+
+      toast.success("Thanks For Contacting");
+
+      reset();
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
     <div>
-      <div style={{
-        height: "6rem"
-      }}></div>
-
-
 
       <div className='contact-hero-div'>
         <span style={{
@@ -35,7 +51,7 @@ const Contact = () => {
 
       <div className='message-div'>
 
-        <div className='message-form-div'>
+        <form className='message-form-div' onSubmit={handleSubmit(onSubmit)}>
 
 
           <div className='message-div-head'>
@@ -55,18 +71,83 @@ const Contact = () => {
           <div className='contact-form-div'>
 
             <div className='form-input mt-3'>
-              <input type="text" placeholder='Full Name' />
-              <input type="text" placeholder='Email Address' />
-              <input type="text" placeholder='Phone Number' />
-              <input type="text" placeholder='Subject' />
+              <input
+                type="text"
+                placeholder='Full Name'
+                {
+                ...register("name",
+                  {
+                    required: true,
+                  }
+                )
+                }
+              />
+
+
+              <input
+                type="email"
+                placeholder='Email Address'
+                {
+                ...register("email",
+                  {
+                    required: true,
+                  }
+                )
+                }
+              />
+
+
+              <input
+                type="number"
+                placeholder='Phone Number'
+                inputMode="numeric"
+                onInput={(e) => {
+                  e.target.value = e.target.value.replace(/\D/g, "");
+                }}
+                {
+                ...register("phoneNo",
+                  {
+                    required: true,
+                    minLength: { value: 9, message: "Phone number should contain 10 digits" },
+                    maxLength: { value: 10, message: "Phone number should contain 10 digits" },
+                    pattern: {
+                      value: /^[6-9]\d{9}$/,
+                      message: "Enter a valid 10-digit mobile number",
+                    },
+                  }
+                )
+                }
+              />
+              {/* {errors.phoneNo && toast.error(errors.phoneNo.message)} */}
+
+              <input
+                type="text"
+                placeholder='Subject'
+                {
+                ...register("subject",
+                  {
+                    required: true,
+                  }
+                )
+                }
+              />
             </div>
 
-            <textarea placeholder='Your Message'></textarea>
+            <textarea
+              placeholder='Your Message'
+              {
+              ...register("message",
+                {
+                  required: true,
+                }
+              )
+              }
+            ></textarea>
             <button><FaPaperPlane /> Send Message</button>
           </div>
 
 
-        </div>
+        </form>
 
 
         <div className='resort-map-div'>
@@ -81,7 +162,7 @@ const Contact = () => {
             title="Google Map"
           ></iframe>
 
-          <button onClick={handleMap}><FaPaperPlane/> Get Direction</button>
+          <button><FaPaperPlane /> Get Direction</button>
         </div>
 
       </div>
