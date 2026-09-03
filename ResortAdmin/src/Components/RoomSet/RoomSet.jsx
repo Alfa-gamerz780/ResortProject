@@ -67,7 +67,7 @@ const RoomSet = () => {
       }
 
       reset();
-      selectedRoom(null);
+      setSelectedRoom(null);
       setEditMode(true);
 
 
@@ -88,12 +88,12 @@ const RoomSet = () => {
         text: "Want to delete this room",
         icon: "warning",
         showCancelButton: true,
-      }).then((result => {
+      }).then(async (result) => {
         if (result.isConfirmed) {
-          dispatch(deleteRoom(id)).unwrap();
+          await dispatch(deleteRoom(id)).unwrap();
           toast.success("Room Deleted Successfully");
         }
-      }));
+      });
     } catch (error) {
       toast.error("Can't Delete Room");
     }
@@ -109,7 +109,11 @@ const RoomSet = () => {
           }}
         >Edit</button>
         <button
-          onClick={() => setEditMode(false)}
+          onClick={() => {
+            setSelectedRoom(null);
+            reset({});
+            setEditMode(false);
+          }}
           style={{
             color: editMode ? "black" : "#C89B3C"
           }}
@@ -168,7 +172,7 @@ const RoomSet = () => {
                 accept="image/*"
                 {...register("roomImage",
                   {
-                    required: true,
+                    required: selectedRoom ? false : "Image is required",
                   }
                 )}
               />
@@ -207,7 +211,6 @@ const RoomSet = () => {
 
                 <input
                   type="number"
-                  maxLength={1}
                   placeholder='Number of Bed'
                   {...register("noOfBed",
                     {
@@ -220,7 +223,6 @@ const RoomSet = () => {
 
                 <input
                   type="number"
-                  maxLength={1}
                   placeholder='Number of Guest'
                   {...register("noOfGuest",
                     {

@@ -1,6 +1,6 @@
 import cloudinary from "../Config/cloudinary.js";
 import Room from "../Models/room.model.js";
-import uploadToCloudinary from "../Utils/uploadToCloudinary.js";
+import uploadToCloudinary from "../Utils/UploadToCloudinary.js";
 
 const addRoom = async (req, res) => {
     try {
@@ -24,7 +24,7 @@ const addRoom = async (req, res) => {
             roomPrice: data.roomPrice,
             nameOfBed: data.nameOfBed,
             roomImage: result.secure_url,
-            imagePublicId: result.public_url,
+            imagePublicId: result.public_id,
         });
 
         res.status(201).json({
@@ -33,7 +33,7 @@ const addRoom = async (req, res) => {
             data: room,
         })
     } catch (error) {
-        res.status(501).json({
+        res.status(500).json({
             success: false,
             message: "Something Went Wrong",
             error: error.message,
@@ -47,10 +47,10 @@ const editRoom = async (req, res) => {
         const data = req.body;
         const room = await Room.findById(id);
 
-        if (!req.file) {
-            return res.status(401).json({
+        if (!room) {
+            return res.status(404).json({
                 success: false,
-                message: "Image is required",
+                message: "Room not found",
             });
         }
 
@@ -61,28 +61,27 @@ const editRoom = async (req, res) => {
         room.roomDescription = data.roomDescription;
         room.roomPrice = data.roomPrice;
         room.nameOfBed = data.nameOfBed;
-        
-        if(req.file){
+
+        // Image is optional on edit - only touch Cloudinary if a new file was sent.
+        if (req.file) {
             const result = await uploadToCloudinary(req.file.buffer);
-            
-            if (room.roomImagePublicId){
-                await cloudinary.uploader.destroy(
-                    room.roomImagePublicId
-                );
+
+            if (room.imagePublicId) {
+                await cloudinary.uploader.destroy(room.imagePublicId);
             }
-            
+
             room.roomImage = result.secure_url;
-            room.roomImagePublicId = result.public_url;
+            room.imagePublicId = result.public_id;
         }
-        
-        await room.save()
-        
+
+        await room.save();
+
         res.status(200).json({
             success: true,
             message: "Room Updated Successfully",
             data: room,
         });
-        
+
     } catch (error) {
         console.log("UPDATE ROOM ERROR:", error);
         res.status(500).json({
@@ -99,7 +98,7 @@ const getRoom = async (req, res) => {
 
         const rooms = await Room.find();
 
-        res.status(201).json({
+        res.status(200).json({
             success: true,
             message: "Fetched Rooms",
             rooms,
@@ -118,13 +117,17 @@ const deleteRoom = async (req, res) => {
     try {
         const { id } = req.params;
 
-        const deleteRoom = await Room.findByIdAndDelete(id);
+        const deletedRoom = await Room.findByIdAndDelete(id);
 
-        if (!deleteRoom) {
+        if (!deletedRoom) {
             return res.status(404).json({
                 success: false,
                 message: "Data not Found"
             });
+        }
+
+        if (deletedRoom.imagePublicId) {
+            await cloudinary.uploader.destroy(deletedRoom.imagePublicId);
         }
 
         res.status(200).json({

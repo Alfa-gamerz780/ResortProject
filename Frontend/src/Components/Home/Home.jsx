@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Home.css';
 import '../Animation.css'
-import herosection from '../../assets/Herosection.png';
 import reward from '../../assets/vector-award.png';
 import room1 from '../../assets/room1.png';
 import resortView from '../../assets/resortView.mp4';
@@ -20,12 +19,18 @@ import { LuSquareArrowOutUpRight } from "react-icons/lu";
 import { FaRegStar } from "react-icons/fa6";
 import { BsGeoAlt } from "react-icons/bs";
 import Check from '../Check-Availability/Check';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getRoom } from '../../features/RoomSlice';
 
 const Home = () => {
 
   const rooms = useSelector((state) => state.room.rooms);
+  const dispatch = useDispatch();
   const navigate = useNavigate()
+
+  useEffect(() => {
+    dispatch(getRoom());
+  }, [dispatch]);
 
 
   return (
@@ -136,30 +141,30 @@ const Home = () => {
         <div className="home-card-div">
 
           {
-            rooms.slice(1, 4).map((room) => {
+            rooms.slice(0, 3).map((room) => {
               return (
-                <div className="home-card" key={room.id} onClick={() => { navigate(`/roomView/${room.id}`) }}>
+                <div className="home-card" key={room._id} onClick={() => { navigate(`/roomView/${room._id}`) }}>
                   <div className='home-card-img'>
-                    <img src={room.image} alt="" />
+                    <img src={room.roomImage} alt="" />
                   </div>
                   <div className='home-card-info'>
-                    <span>{room.title}</span>
-                    <p><b>{room.price}/</b>night</p>
+                    <span>{room.roomName}</span>
+                    <p><b>{room.roomPrice}/</b>night</p>
                   </div>
                   <div className='ex-detail'>
                     <div className='detail'>
                       <IoPersonOutline />
-                      <span>{room.guest} Guests</span>
+                      <span>{room.noOfGuest} Guests</span>
                     </div>
 
                     <div className='detail'>
                       <MdOutlineBed />
-                      <span>{room.bed}</span>
+                      <span>{room.nameOfBed}</span>
                     </div>
 
                     <div className='detail'>
                       <LuSquareArrowOutUpRight />
-                      <span>{room.area}m<sup>2</sup></span>
+                      <span>{room.roomArea}m<sup>2</sup></span>
                     </div>
                   </div>
                 </div>

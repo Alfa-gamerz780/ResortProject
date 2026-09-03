@@ -8,6 +8,7 @@ import logo from '../../assets/logo.png'
 const Navbar = () => {
   const navigate = useNavigate();
   const [toggle, setToggle] = useState('flex');
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() =>{
     const handleResize = () =>{
@@ -31,9 +32,9 @@ const Navbar = () => {
   }
 
   return (
-    <div id='nav-div' className={scroll ? "active-nav" : ""}>
+    <div id='nav-div' className={scrolled ? "active-nav" : ""}>
       <img src={logo} alt="" />
-      <ul className= {scroll ? "scroll-nav-item" : ''} id='nav-ul'
+      <ul className= {scrolled ? "scroll-nav-item" : ''} id='nav-ul'
       style={{
         display: `${toggle}`
       }}>

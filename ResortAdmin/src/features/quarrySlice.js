@@ -2,37 +2,41 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios'
 
 const initialState = {
-    reviews: [],
+    quarries: [],
     loading: false,
     error: null,
 };
 
-export const getReview = createAsyncThunk(
-    "review/getReview",
+export const getQuarry = createAsyncThunk(
+    "quarry/getQuarry",
 
     async (_, { rejectWithValue }) => {
+
         try {
             const response = await axios.get(
-                "http://localhost:3000/api/review/all",
+                "http://localhost:3000/api/quarry/get",
             );
-
-            return response.data.reviews || [];
+            
+            return response.data.quarry || [];
         } catch (error) {
+            
             return rejectWithValue(
                 error.response?.data?.message ||
-                "Can't get Reviews"
-            )
+                "Can't Find Quarries"
+            );
         }
+
     }
 );
 
-export const dropReview = createAsyncThunk(
-    "review/dropReview",
+export const deleteQuarry = createAsyncThunk(
+    "quarry/deleteQuarry",
 
     async (id, { rejectWithValue }) => {
+
         try {
             const response = await fetch(
-                `http://localhost:3000/api/review/remove/${id}`,
+                `http://localhost:3000/api/quarry/delete/${id}`,
                 {
                     method: "DELETE",
                     credentials: "include"
@@ -54,48 +58,48 @@ export const dropReview = createAsyncThunk(
             return rejectWithValue(error.message);
         }
     }
-)
+);
 
-const reviewSlice = createSlice({
-    name: "review",
+const quarrySlice = createSlice({
+    name: "quarry",
     initialState,
     reducers: {},
 
     extraReducers: (builder) => {
         builder
-            .addCase(getReview.pending, (state) => {
+            .addCase(getQuarry.pending, (state) =>{
                 state.loading = true;
                 state.error = null;
             })
 
-            .addCase(getReview.fulfilled, (state, action) => {
+            .addCase(getQuarry.fulfilled, (state, action) => {
                 state.loading = false;
-                state.reviews = action.payload;
+                state.quarries = action.payload
             })
 
-            .addCase(getReview.rejected, (state, action) => {
+            .addCase(getQuarry.rejected, (state, action) => {
                 state.loading = false;
-                state.error = action.payload;
+                state.error = action.payload
             })
 
-            .addCase(dropReview.pending, (state) => {
+            .addCase(deleteQuarry.pending, (state) => {
                 state.loading = true;
                 state.error = null;
             })
 
-            .addCase(dropReview.fulfilled, (state, action) => {
+            .addCase(deleteQuarry.fulfilled, (state, action) => {
                 state.loading = false;
 
-                state.reviews = state.reviews.filter(
-                    (review) => review._id !== action.payload.id
+                state.quarries = state.quarries.filter(
+                    (quarries) => quarries._id !== action.payload.id
                 );
             })
 
-            .addCase(dropReview.rejected, (state, action) => {
+            .addCase(deleteQuarry.rejected, (state, action) =>{
                 state.loading = false;
                 state.error = action.payload;
-            });
+            })
     },
 });
 
-export default reviewSlice.reducer;
+export default quarrySlice.reducer;

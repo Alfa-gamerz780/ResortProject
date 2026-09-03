@@ -33,6 +33,10 @@ const Booking = () => {
     console.log(data)
   }
 
+  if (!room) {
+    return <h1>Room Not Found</h1>;
+  }
+
   return (
     <div className='booking-body'>
 

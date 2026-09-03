@@ -55,9 +55,9 @@ const dropReview = async (req, res) => {
 
         const { id } = req.params;
 
-        const dropReview = await Review.findByIdAndDelete(id);
+        const removedReview = await Review.findByIdAndDelete(id);
 
-        if (!dropReview) {
+        if (!removedReview) {
             return res.status(404).json({
                 status: false,
                 message: "Review not found"

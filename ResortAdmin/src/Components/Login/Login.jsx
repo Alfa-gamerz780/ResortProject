@@ -5,8 +5,6 @@ import { useDispatch } from 'react-redux';
 import { loginThunk } from '../../features/authSlice';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify'
-
-
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
@@ -44,16 +42,12 @@ const Login = () => {
     try {
       setServerError("");
 
-      const response = await dispatch(
+      await dispatch(
         loginThunk({
           empEmail: data.empEmail,
           password: data.password
         })
       ).unwrap();
-
-      if (response.token) {
-        localStorage.setItem("token", response.token);
-      }
 
       toast.success("Login Successfully");
 

@@ -6,6 +6,8 @@
     position: fixed;
     width: 100%;
     z-index: 999;
+    background-color: #0F4C45;
+
 }
 
 .active-nav {

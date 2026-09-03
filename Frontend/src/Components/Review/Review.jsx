@@ -288,9 +288,9 @@ const Review = () => {
                 })}
               />
 
-              {errors.name && (
+              {errors.username && (
                 <p>
-                  {errors.name.message}
+                  {errors.username.message}
                 </p>
               )}
 

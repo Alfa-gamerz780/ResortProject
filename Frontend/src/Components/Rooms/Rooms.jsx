@@ -1,6 +1,5 @@
 import React from 'react'
 import './Rooms.css'
-import room1 from '../../assets/room1.png';
 import Check from '../Check-Availability/Check'
 
 import { useSelector, useDispatch } from 'react-redux'

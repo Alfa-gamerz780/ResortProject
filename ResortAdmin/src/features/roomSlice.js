@@ -26,7 +26,8 @@ export const addRoom = createAsyncThunk(
 
             const response = await axios.post(
                 "http://localhost:3000/api/room/add",
-                formData
+                formData,
+                { withCredentials: true }
             );
 
             return response.data.data;
@@ -43,12 +44,21 @@ export const addRoom = createAsyncThunk(
 export const getRoom = createAsyncThunk(
     "room/getRoom",
 
-    async () => {
-        const response = await axios.get(
-            "http://localhost:3000/api/room/fetch"
-        );
+     async (_, { rejectWithValue }) => {
+        try {
+            const response = await axios.get(
+                "http://localhost:3000/api/room/fetch"
+            );
 
-        return response.data.rooms || [];
+            return response.data.rooms || [];
+
+        } catch (error) {
+
+            return rejectWithValue(
+                error.response?.data?.message ||
+                "Can't Fetch Room"
+            );
+        }
     }
 );
 
@@ -61,7 +71,8 @@ export const deleteRoom = createAsyncThunk(
             const response = await fetch(
                 `http://localhost:3000/api/room/delete/${id}`,
                 {
-                    method: "DELETE"
+                    method: "DELETE",
+                    credentials: "include"
                 }
             );
 
@@ -97,13 +108,14 @@ export const editRoom = createAsyncThunk(
             formData.append("roomDescription", data.roomDescription);
             formData.append("roomPrice", data.roomPrice);
 
-            if(data.roomImage?.[0]){
+            if (data.roomImage?.[0]) {
                 formData.append("roomImage", data.roomImage[0]);
             }
 
             const response = await axios.put(
                 `http://localhost:3000/api/room/update/${id}`,
-                formData
+                formData,
+                { withCredentials: true }
             );
 
             return response.data.data;
@@ -137,7 +149,7 @@ const roomSlice = createSlice({
 
             .addCase(addRoom.rejected, (state, action) => {
                 state.loading = false;
-                state.error = action.payload.rooms;
+                state.error = action.payload;
             })
 
             .addCase(getRoom.fulfilled, (state, action) => {

@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, isRejectedWithValue } from "@reduxjs/toolkit"
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios";
 
 const initialState = {
@@ -10,7 +10,7 @@ const initialState = {
 export const addQuarry = createAsyncThunk(
     "quarry/addQuarry",
 
-    async (data, { rejectedWithValue }) => {
+    async (data, { rejectWithValue }) => {
         try {
 
             const response = await axios.post(
@@ -21,7 +21,7 @@ export const addQuarry = createAsyncThunk(
             return response.data.data;
 
         } catch (error) {
-            return rejectedWithValue(
+            return rejectWithValue(
                 error.response?.data?.message || "Something Went Wrong"
             );
         }

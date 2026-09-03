@@ -11,7 +11,13 @@ import roomRouter from './Routes/room.routes.js';
 const app = express();
 
 app.use(cors({
-    origin: process.env.CORS_ORIGIN,
+    origin: (origin, callback) => {
+        const isLocalOrigin = !origin ||
+            /^http:\/\/localhost:\d+$/.test(origin) ||
+            /^http:\/\/127\.0\.0\.1:\d+$/.test(origin);
+
+        callback(null, isLocalOrigin);
+    },
     credentials: true,
 }));
 

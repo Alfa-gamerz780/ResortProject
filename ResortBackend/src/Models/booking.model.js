@@ -1,17 +1,21 @@
 import mongoose from 'mongoose';
 
-const userSchema = new mongoose.Schema({
-    userName:{
+const bookingSchema = new mongoose.Schema({
+    userName: {
         type: String,
         required: true,
     },
 
-    paymentAmount:{
+    paymentAmount: {
         type: Number,
         required: true,
     },
 
-    noOFRoom:{
+    noOfRoom: {
         type: Number,
     }
-},{timestamps: true})
+}, { timestamps: true });
+
+const Booking = mongoose.model('Booking', bookingSchema);
+
+export default Booking;

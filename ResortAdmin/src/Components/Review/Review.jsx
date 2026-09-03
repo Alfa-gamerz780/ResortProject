@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 const Review = () => {
   const reviewShow = useSelector((state) => state.review.reviews);
   const dispatch = useDispatch();
-  
+
 
   useEffect(() => {
     dispatch(getReview())
@@ -34,7 +34,14 @@ const Review = () => {
                 <p>{review.message}</p>
               </div>
               <hr />
-              <span><FaCalendarDays />14 Aug 2026</span>
+              <span><FaCalendarDays />{new Date(
+                review.createdAt
+              ).toLocaleString("en-IN", {
+                timeZone: "Asia/Kolkata",
+                day: "2-digit",
+                month: "short",
+                year: "numeric",
+              })}</span>
               <div className='del-btn'>
                 <button className='text-light' onClick={() => {
                   Swal.fire({
@@ -42,8 +49,8 @@ const Review = () => {
                     text: "Want to delete this review",
                     icon: "warning",
                     showCancelButton: true,
-                  }).then((result) =>{
-                    if(result.isConfirmed)
+                  }).then((result) => {
+                    if (result.isConfirmed)
                       dispatch(dropReview(review._id))
                   })
                 }}>Delete</button>

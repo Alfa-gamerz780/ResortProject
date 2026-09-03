@@ -10,12 +10,18 @@ const initialState ={
 export const getRoom = createAsyncThunk(
     "room/getRoom",
 
-    async () => {
-        const response = await axios.get(
-            "http://localhost:3000/api/room/fetch"
-        );
+    async (_, { rejectWithValue }) => {
+        try {
+            const response = await axios.get(
+                "http://localhost:3000/api/room/fetch"
+            );
 
-        return response.data.rooms || [];
+            return response.data.rooms || [];
+        } catch (error) {
+            return rejectWithValue(
+                error.response?.data?.message || "Can't Fetch Rooms"
+            );
+        }
     }
 );
 
@@ -26,11 +32,21 @@ const roomSlice = createSlice({
     reducers: {},
 
     extraReducers: (builder) =>{
-        builder 
+        builder
+            .addCase(getRoom.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+
             .addCase(getRoom.fulfilled, (state, action) =>{
                 state.rooms = action.payload || [];
                 state.loading = false;
                 state.error = null;
+            })
+
+            .addCase(getRoom.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
             })
     },
 });

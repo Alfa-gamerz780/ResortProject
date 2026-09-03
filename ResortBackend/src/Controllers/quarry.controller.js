@@ -27,4 +27,53 @@ const addQuarry = async (req, res) => {
     }
 };
 
-export { addQuarry };
+const getQuarry = async (req, res)=>{
+
+    try {
+        const quarry = await Quarry.find();
+
+        res.status(200).json({
+            success: true,
+            message: "Found Quarries",
+            quarry,
+        });
+
+    } catch (error) {
+        
+        res.status(401).json({
+            success: false,
+            message: "Can't Found Quarries"
+        });
+    }
+    
+};
+
+const deleteQuarry = async (req, res) =>{
+
+    console.log(req.params);
+    try {
+        const { id } = req.params;
+        
+        const deletedQuarry = await Quarry.findByIdAndDelete(id);
+
+        if(!deletedQuarry){
+            return res.status(404).json({
+                success: false,
+                message: "Can't Find Quarry"
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "Deleted Quarry"
+        })
+    } catch (error) {
+        
+        res.status(500).json({
+            success: false,
+            message: "Can't Delete Quarry"
+        });
+    }
+};
+
+export { addQuarry, getQuarry, deleteQuarry };

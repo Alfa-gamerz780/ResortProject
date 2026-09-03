@@ -29,16 +29,16 @@ const Check = () => {
                       <p>Guests</p>
                       <select name="" id="">
                         <option value="">Select</option>
-                        <option value="">1 Person</option>
-                        <option value="">2 Person</option>
-                        <option value="">3 Person</option>
-                        <option value="">4 Person</option>
-                        <option value="">5 Person</option>
-                        <option value="">6 Person</option>
-                        <option value="">7 Person</option>
-                        <option value="">8 Person</option>
-                        <option value="">9 Person</option>
-                        <option value="">10 Person</option>
+                        <option value="1">1 Person</option>
+                        <option value="2">2 Person</option>
+                        <option value="3">3 Person</option>
+                        <option value="4">4 Person</option>
+                        <option value="5">5 Person</option>
+                        <option value="6">6 Person</option>
+                        <option value="7">7 Person</option>
+                        <option value="8">8 Person</option>
+                        <option value="9">9 Person</option>
+                        <option value="10">10 Person</option>
                       </select>
                     </div>
                   </div>
@@ -49,11 +49,11 @@ const Check = () => {
                       <p>Rooms</p>
                       <select name="" id="">
                         <option value="">Select</option>
-                        <option value="">1 Room</option>
-                        <option value="">2 Room</option>
-                        <option value="">3 Room</option>
-                        <option value="">4 Room</option>
-                        <option value="">5 Room</option>
+                        <option value="1">1 Room</option>
+                        <option value="2">2 Room</option>
+                        <option value="3">3 Room</option>
+                        <option value="4">4 Room</option>
+                        <option value="5">5 Room</option>
                       </select>
                     </div>
                   </div>
